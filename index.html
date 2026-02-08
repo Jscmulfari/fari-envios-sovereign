@@ -3,119 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fari Envíos | Tu esfuerzo llega siempre a casa</title>
+    <title>Fari Envíos | Sovereign Remittance</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     <style>
         :root {
-            --apple-blue: #007aff;
-            --apple-bg: #ffffff;
-            --apple-text: #1d1d1f;
+            --blue-prime: #0047FF;
+            --gray-deep: #0A0A0B;
         }
         body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: var(--apple-bg); 
-            color: var(--apple-text);
-            overflow-x: hidden;
+            font-family: 'Space Grotesk', sans-serif; 
+            background-color: #FFFFFF; 
+            color: var(--gray-deep);
             -webkit-font-smoothing: antialiased;
         }
+        .serif { font-family: 'Instrument Serif', serif; }
         
-        /* Remotion-Style Animation Core */
-        @keyframes flow-line {
-            0% { stroke-dashoffset: 1000; opacity: 0; }
-            50% { opacity: 1; }
-            100% { stroke-dashoffset: 0; opacity: 0; }
+        .hero-text {
+            font-size: clamp(3rem, 12vw, 10rem);
+            line-height: 0.85;
+            letter-spacing: -0.05em;
         }
-        .animate-flow {
-            stroke-dasharray: 500;
-            animation: flow-line 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-        }
-
-        @keyframes pulse-dot {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(3); opacity: 0; }
-        }
-        .dot-pulse::after {
-            content: '';
-            position: absolute;
-            width: 100%; height: 100%;
-            background: var(--apple-blue);
-            border-radius: 50%;
-            animation: pulse-dot 2s infinite;
+        
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1rem;
         }
 
-        .hero-reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            animation: reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        .animate-in {
+            animation: slideUp 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
         }
-        @keyframes reveal {
-            to { opacity: 1; transform: translateY(0); }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(100px) skewY(5deg); }
+            to { opacity: 1; transform: translateY(0) skewY(0); }
+        }
+
+        .btn-sovereign {
+            background: var(--blue-prime);
+            color: white;
+            padding: 1.5rem 3rem;
+            border-radius: 100px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .btn-sovereign:hover {
+            transform: scale(1.05) rotate(-2deg);
+            box-shadow: 0 30px 60px rgba(0, 71, 255, 0.3);
+        }
+
+        .card-route {
+            border-left: 1px solid #E5E7EB;
+            padding-left: 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .card-route:hover {
+            border-left: 4px solid var(--blue-prime);
+            background: #F9FAFB;
         }
     </style>
 </head>
-<body class="selection:bg-blue-100 selection:text-blue-900">
-    <nav class="fixed w-full z-[100] backdrop-blur-xl bg-white/80 border-b border-gray-100">
-        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-            <div class="text-xl font-bold tracking-tight">Fari Envíos</div>
-            <a href="https://wa.me/726567607" class="bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-bold hover:scale-105 transition-transform shadow-lg shadow-blue-200">
-                Iniciar
-            </a>
+<body class="selection:bg-blue-600 selection:text-white">
+    <!-- Clean Nav -->
+    <nav class="fixed w-full z-50 px-8 py-6 flex justify-between items-end mix-blend-difference text-white md:text-black">
+        <div class="text-2xl font-bold tracking-tighter">FARI.</div>
+        <div class="flex gap-8 font-medium text-sm uppercase tracking-widest opacity-50 hidden md:flex">
+            <a href="#infra" class="hover:opacity-100">Infraestructura</a>
+            <a href="#nodos" class="hover:opacity-100">Nodos</a>
         </div>
+        <a href="https://wa.me/726567607" class="font-bold border-b-2 border-blue-600 pb-1">WHATSAPP_LINK</a>
     </nav>
 
     <main>
-        <!-- Dynamic Hero Section -->
-        <section class="min-h-screen flex flex-col items-center justify-center pt-24 px-6 relative overflow-hidden">
-            {/* Visual Identity Layer (Remotion Inspired) */}
-            <div class="absolute inset-0 z-0 pointer-events-none opacity-20">
-                <svg width="100%" height="100%" viewBox="0 0 1000 1000" preserveAspectRatio="none">
-                    <path d="M-100,500 C200,300 800,700 1100,500" stroke="#007aff" stroke-width="2" fill="none" class="animate-flow" />
-                    <path d="M-100,400 C300,600 700,200 1100,400" stroke="#007aff" stroke-width="1" fill="none" class="animate-flow" style="animation-delay: 1s" />
-                </svg>
-            </div>
-
-            <div class="max-w-5xl mx-auto text-center z-10">
-                <h1 class="hero-reveal text-6xl md:text-[8rem] font-extrabold tracking-tighter leading-[0.9] mb-8">
-                    Tu esfuerzo llega <br> <span class="text-blue-600">siempre a casa.</span>
+        <!-- Hero: The Statement -->
+        <section class="min-h-screen flex flex-col justify-center px-8 md:px-16 pt-32">
+            <div class="animate-in">
+                <span class="text-blue-600 font-bold uppercase tracking-[0.4em] text-[10px] mb-8 block">Sovereign Remittance Infrastructure v2.1</span>
+                <h1 class="hero-text font-bold uppercase mb-16">
+                    Tu dinero <br> <span class="serif italic font-normal low-case text-blue-600">siempre</span> <br> llega a casa.
                 </h1>
-                <p class="hero-reveal [animation-delay:400ms] text-xl md:text-2xl text-gray-500 font-medium max-w-2xl mx-auto mb-16 leading-tight">
-                    Infraestructura técnica para envíos de remesas de España a Latinoamérica. Seguridad, rapidez y transparencia absoluta.
-                </p>
                 
-                <div class="hero-reveal [animation-delay:800ms] relative inline-block">
-                    <div class="absolute -top-1 -right-1 w-3 h-3 bg-blue-600 rounded-full dot-pulse"></div>
-                    <a href="https://wa.me/726567607" class="bg-blue-600 text-white px-12 py-5 rounded-full text-xl font-bold hover:shadow-2xl hover:shadow-blue-300 transition-all">
-                        Comenzar Envío
-                    </a>
+                <div class="grid-layout items-start">
+                    <p class="col-span-12 md:col-span-5 text-xl md:text-3xl font-light leading-tight text-gray-500 mb-12">
+                        Desplegamos tecnología de liquidación directa para conectar España con Latinoamérica. Sin intermediarios, sin demoras, solo eficiencia.
+                    </p>
+                    <div class="col-span-12 md:col-start-8 md:col-span-5">
+                        <a href="https://wa.me/726567607" class="btn-sovereign text-2xl group">
+                            INICIAR ENVÍO
+                            <span class="group-hover:translate-x-2 transition-transform">→</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Route Grid -->
-        <section class="py-40 bg-gray-50">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {['Venezuela', 'Colombia', 'Panamá', 'Dominicana'].map((country) => (
-                        <div key={country} class="bg-white p-12 rounded-[3rem] border border-gray-100 transition-all hover:shadow-2xl hover:-translate-y-2 group">
-                            <div class="flex justify-between items-center mb-12">
-                                <span class="text-blue-600 font-bold tracking-widest text-[10px] uppercase">Node_Active</span>
-                                <span class="text-3xl grayscale group-hover:grayscale-0 transition-all">📍</span>
-                            </div>
-                            <h3 class="text-4xl font-extrabold tracking-tight mb-4">{country}</h3>
-                            <p class="text-gray-400 font-medium leading-relaxed">Liquidación inmediata y garantizada bajo protocolos de seguridad soberana.</p>
-                        </div>
-                    ))}
+        <!-- Stats Section: Logic -->
+        <section id="infra" class="py-40 bg-[#0A0A0B] text-white px-8 md:px-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-24">
+                <div>
+                    <div class="text-[10px] uppercase tracking-widest text-blue-600 mb-8">Estatus_Red</div>
+                    <h2 class="text-6xl font-bold tracking-tighter mb-4 italic serif">Liquidación_</h2>
+                    <p class="text-gray-500 font-medium">Menos de 60 minutos para transacciones bancarias directas y pago móvil.</p>
+                </div>
+                <div>
+                    <div class="text-[10px] uppercase tracking-widest text-blue-600 mb-8">Integridad_Dato</div>
+                    <h2 class="text-6xl font-bold tracking-tighter mb-4 italic serif">Cero_Costo_</h2>
+                    <p class="text-gray-500 font-medium">Transparencia absoluta en la tasa de cambio. Lo que ves es lo que llega.</p>
+                </div>
+                <div>
+                    <div class="text-[10px] uppercase tracking-widest text-blue-600 mb-8">Protocolo_Seguridad</div>
+                    <h2 class="text-6xl font-bold tracking-tighter mb-4 italic serif">Soberanía_</h2>
+                    <p class="text-gray-500 font-medium">Encriptación de punto a punto en cada etapa del proceso de envío.</p>
                 </div>
             </div>
         </section>
+
+        <!-- Routes: The Grid -->
+        <section id="nodos" class="py-40 px-8 md:px-16">
+            <h2 class="text-4xl md:text-8xl font-bold tracking-tighter uppercase mb-24">Nodos Regionales <br> <span class="text-blue-600">Sincronizados</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-gray-200">
+                <div class="card-route bg-white py-20">
+                    <div class="text-4xl mb-12">🇻🇪</div>
+                    <h3 class="text-5xl font-bold tracking-tighter mb-4">VENEZUELA</h3>
+                    <p class="max-w-xs text-gray-400 font-medium">Cobertura total bancaria. Pago móvil inmediato 24/7.</p>
+                </div>
+                <div class="card-route bg-white py-20">
+                    <div class="text-4xl mb-12">🇨🇴</div>
+                    <h3 class="text-5xl font-bold tracking-tighter mb-4">COLOMBIA</h3>
+                    <p class="max-w-xs text-gray-400 font-medium">Liquidación TRM en Bancolombia, Nequi y Daviplata.</p>
+                </div>
+                <div class="card-route bg-white py-20">
+                    <div class="text-4xl mb-12">🇵🇦</div>
+                    <h3 class="text-5xl font-bold tracking-tighter mb-4">PANAMÁ</h3>
+                    <p class="max-w-xs text-gray-400 font-medium">Transferencias locales ACH y banca rápida.</p>
+                </div>
+                <div class="card-route bg-white py-20">
+                    <div class="text-4xl mb-12">🇩🇴</div>
+                    <h3 class="text-5xl font-bold tracking-tighter mb-4">DOMINICANA</h3>
+                    <p class="max-w-xs text-gray-400 font-medium">Apoyo familiar directo con las mejores tasas del mercado.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-20 px-8 md:px-16 border-t border-gray-100 flex flex-col md:flex-row justify-between items-end">
+            <div>
+                <div class="text-4xl font-bold tracking-tighter mb-4">FARI.</div>
+                <p class="text-gray-400 font-bold text-[10px] uppercase tracking-widest">© 2026 Nexus Core Engineering</p>
+            </div>
+            <div class="text-right">
+                <div class="text-blue-600 font-bold text-[10px] tracking-widest uppercase mb-2 animate-pulse">System_Live</div>
+                <p class="text-gray-300 text-xs">Node_Madrid_v2.1</p>
+            </div>
+        </footer>
     </main>
-
-    <footer class="py-20 bg-white border-t border-gray-100">
-        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
-            <div class="text-xl font-bold tracking-tight">Fari Envíos.</div>
-            <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest italic">Nexus Sovereign System v1.1</div>
-        </div>
-    </footer>
 </body>
 </html>
