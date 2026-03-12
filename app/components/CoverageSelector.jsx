@@ -29,6 +29,23 @@ const OPTIONS = [
   },
 ];
 
+const ROLE_COPY = {
+  envia: {
+    eyebrow: "Tú envías desde USD",
+    title: "Selecciona a dónde vas a enviar",
+    placeholder: "Elegir destino de entrega",
+    methodLabel: "Cómo recibe tu familiar",
+    amountLabel: "Monto que deseas enviar",
+  },
+  recibe: {
+    eyebrow: "Tu familiar recibe",
+    title: "Confirma dónde recibe el dinero",
+    placeholder: "Elegir destino de recepción",
+    methodLabel: "Método de entrega disponible",
+    amountLabel: "Cotización final por WhatsApp",
+  },
+};
+
 const CoverageCard = ({
   selected,
   onSelect,
@@ -36,9 +53,8 @@ const CoverageCard = ({
   onMetodoChange,
   cantidad,
   onCantidadChange,
-  showConsultar = false,
   rol = "envia",
-  excludeId = "", // País seleccionado en la otra tarjeta (no mostrar en opciones)
+  excludeId = "",
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const cardRef = useRef(null);
@@ -48,6 +64,7 @@ const CoverageCard = ({
   const showMetodo = !!selected;
   const showCantidad = showMetodo && !!currentMetodo;
   const availableOptions = OPTIONS.filter((opt) => opt.id !== excludeId);
+  const copy = ROLE_COPY[rol];
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -72,14 +89,18 @@ const CoverageCard = ({
       ref={cardRef}
       className={`ref-coverage-card ref-coverage-card-${rol} ${isOpen ? "ref-coverage-card-open" : ""}`}
     >
+      <div className="ref-coverage-card-top">
+        <p className="ref-coverage-eyebrow">{copy.eyebrow}</p>
+        <h3 className="ref-coverage-card-title">{copy.title}</h3>
+      </div>
+
       {option ? (
         <div className="ref-coverage-content ref-coverage-steps">
-          {/* Paso 1: País */}
           <div className="ref-coverage-step ref-coverage-step-pais">
             <span className="ref-coverage-step-num">1</span>
             <div className="ref-coverage-step-pais-inner">
               <div className="ref-route-head ref-route-head-inline">
-                <h3>{option.title}</h3>
+                <h4>{option.title}</h4>
                 <img
                   src={option.flagSrc}
                   alt=""
@@ -98,20 +119,19 @@ const CoverageCard = ({
             </div>
           </div>
 
-          {/* Paso 2: Método de pago - solo visible cuando hay país */}
           {showMetodo && (
             <div className="ref-coverage-step">
               <span className="ref-coverage-step-num">2</span>
               <div className="ref-coverage-field">
-                <label htmlFor={`metodo-${selected}`} className="ref-coverage-label">
-                  Método de pago
+                <label htmlFor={`metodo-${rol}-${selected}`} className="ref-coverage-label">
+                  {copy.methodLabel}
                 </label>
                 <select
-                  id={`metodo-${selected}`}
+                  id={`metodo-${rol}-${selected}`}
                   value={currentMetodo}
                   onChange={(e) => onMetodoChange(e.target.value)}
                   className="ref-coverage-select"
-                  aria-label="Seleccionar método de pago"
+                  aria-label={copy.methodLabel}
                 >
                   <option value="">Seleccionar método...</option>
                   {metodos.map((m) => (
@@ -124,19 +144,14 @@ const CoverageCard = ({
             </div>
           )}
 
-          {/* Paso 3: Cantidad - solo visible cuando hay método */}
           {showCantidad && (
             <div className="ref-coverage-step">
               <span className="ref-coverage-step-num">3</span>
               <div className="ref-coverage-field ref-coverage-field-cantidad">
-                <label htmlFor={showConsultar ? undefined : `cantidad-${selected}`} className="ref-coverage-label">
-                  Cantidad
+                <label htmlFor={rol === "envia" ? `cantidad-${selected}` : undefined} className="ref-coverage-label">
+                  {copy.amountLabel}
                 </label>
-                {showConsultar ? (
-                  <div className="ref-coverage-consultar">
-                    Consultar
-                  </div>
-                ) : (
+                {rol === "envia" ? (
                   <div className="ref-coverage-cantidad-wrap">
                     <span className="ref-coverage-divisa-label">USD</span>
                     <input
@@ -150,6 +165,15 @@ const CoverageCard = ({
                       aria-label="Ingresar monto"
                     />
                   </div>
+                ) : (
+                  <a
+                    href="https://wa.me/726567607"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="ref-coverage-whatsapp-link"
+                  >
+                    Consultar tasa y monto por WhatsApp →
+                  </a>
                 )}
               </div>
             </div>
@@ -164,10 +188,10 @@ const CoverageCard = ({
           onClick={() => setIsOpen(true)}
           aria-expanded={isOpen}
           aria-haspopup="listbox"
-          aria-label="Seleccionar destino"
+          aria-label={copy.placeholder}
         >
           <p className="ref-coverage-placeholder">
-            {isOpen ? "Elige un destino" : "Seleccionar destino"}
+            {isOpen ? "Elige un destino" : copy.placeholder}
           </p>
         </button>
       )}
@@ -242,51 +266,59 @@ export default function CoverageSelector() {
   const canSwap = left || right;
 
   return (
-    <div className="ref-coverage-compare" role="region" aria-label="Comparar cobertura y tasas">
-      <CoverageCard
-        selected={left}
-        onSelect={handleLeftSelect}
-        metodo={leftMetodo}
-        onMetodoChange={setLeftMetodo}
-        cantidad={leftCantidad}
-        onCantidadChange={setLeftCantidad}
-        rol="envia"
-        excludeId={right}
-      />
-      <div className="ref-coverage-swap-wrap">
-        <button
-          type="button"
-          className="ref-coverage-swap"
-          onClick={handleSwap}
-          disabled={!canSwap}
-          aria-label="Intercambiar destinos"
-          title="Intercambiar destinos"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden
-          >
-            <path d="M16 7H4M4 7l4-4M4 7l4 4" />
-            <path d="M8 17h12M20 17l-4 4M20 17l-4-4" />
-          </svg>
-        </button>
+    <div className="ref-coverage-flow">
+      <div className="ref-coverage-flow-head">
+        <p className="ref-coverage-flow-eyebrow">Todo empieza por WhatsApp</p>
+        <p className="ref-coverage-flow-copy">
+          Primero eliges el país y el método de entrega. La cotización final y la confirmación del envío se completan por WhatsApp.
+        </p>
       </div>
-      <CoverageCard
-        selected={right}
-        onSelect={handleRightSelect}
-        metodo={rightMetodo}
-        onMetodoChange={setRightMetodo}
-        cantidad={rightCantidad}
-        onCantidadChange={setRightCantidad}
-        showConsultar
-        rol="recibe"
-        excludeId={left}
-      />
+
+      <div className="ref-coverage-compare" role="region" aria-label="Comparar cobertura y tasas">
+        <CoverageCard
+          selected={left}
+          onSelect={handleLeftSelect}
+          metodo={leftMetodo}
+          onMetodoChange={setLeftMetodo}
+          cantidad={leftCantidad}
+          onCantidadChange={setLeftCantidad}
+          rol="envia"
+          excludeId={right}
+        />
+        <div className="ref-coverage-swap-wrap">
+          <button
+            type="button"
+            className="ref-coverage-swap"
+            onClick={handleSwap}
+            disabled={!canSwap}
+            aria-label="Intercambiar destinos"
+            title="Intercambiar destinos"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden
+            >
+              <path d="M16 7H4M4 7l4-4M4 7l4 4" />
+              <path d="M8 17h12M20 17l-4 4M20 17l-4-4" />
+            </svg>
+          </button>
+        </div>
+        <CoverageCard
+          selected={right}
+          onSelect={handleRightSelect}
+          metodo={rightMetodo}
+          onMetodoChange={setRightMetodo}
+          cantidad={rightCantidad}
+          onCantidadChange={setRightCantidad}
+          rol="recibe"
+          excludeId={left}
+        />
+      </div>
     </div>
   );
 }

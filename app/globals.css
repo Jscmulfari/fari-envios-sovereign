@@ -2722,11 +2722,56 @@ a {
     linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
 }
 
+.ref-routes-eyebrow {
+  margin: 0 0 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #2563eb;
+}
+
 .ref-routes h2 {
-  margin: 0 0 6rem;
+  margin: 0;
   font-size: clamp(2.25rem, 6vw, 3.75rem);
   font-weight: 800;
   letter-spacing: -0.04em;
+}
+
+.ref-routes-copy {
+  max-width: 760px;
+  margin: 1rem 0 3rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #475569;
+}
+
+.ref-coverage-flow {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.ref-coverage-flow-head {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.ref-coverage-flow-eyebrow {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #0f766e;
+}
+
+.ref-coverage-flow-copy {
+  margin: 0;
+  max-width: 760px;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: #475569;
 }
 
 .ref-coverage-compare {
@@ -2784,6 +2829,30 @@ a {
   box-shadow: 0 18px 36px rgba(15, 23, 42, 0.08);
   transition: all 0.35s ease;
   min-height: 200px;
+}
+
+.ref-coverage-card-top {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1rem;
+}
+
+.ref-coverage-eyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.ref-coverage-card-title {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #0f172a;
 }
 
 .ref-coverage-card::before {
@@ -2971,17 +3040,24 @@ a {
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
 }
 
-.ref-coverage-consultar {
-  display: flex;
+.ref-coverage-whatsapp-link {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 1rem;
+  padding: 0.85rem 1rem;
   font-size: 0.95rem;
-  font-weight: 600;
-  color: #64748b;
-  background: rgba(241, 245, 249, 0.9);
-  border: 1px solid rgba(148, 163, 184, 0.3);
+  font-weight: 700;
+  color: #14532d;
+  background: linear-gradient(135deg, #f8fffc 0%, #e8fff4 48%, #dcfce7 100%);
+  border: 1px solid rgba(5, 150, 105, 0.25);
   border-radius: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.ref-coverage-whatsapp-link:hover {
+  transform: translateY(-1px);
+  border-color: rgba(21, 128, 61, 0.35);
+  box-shadow: 0 12px 24px rgba(20, 83, 45, 0.12);
 }
 
 .ref-coverage-divisa-label {
@@ -3041,9 +3117,9 @@ a {
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
 }
 
-.ref-coverage-card h3 {
-  margin: 0 0 0.5rem;
-  font-size: clamp(1.5rem, 3vw, 2rem);
+.ref-coverage-card h4 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.6vw, 1.8rem);
   font-weight: 800;
   letter-spacing: -0.03em;
 }

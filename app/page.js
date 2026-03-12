@@ -78,7 +78,11 @@ export default function HomePage() {
         </section>
 
         <section id="destinos" className="ref-routes">
-          <h2>Cobertura</h2>
+          <p className="ref-routes-eyebrow">Cobertura disponible</p>
+          <h2>Elige destino y método de entrega</h2>
+          <p className="ref-routes-copy">
+            Revisa a dónde enviamos y cómo recibe tu familiar antes de continuar la cotización por WhatsApp.
+          </p>
           <CoverageSelector />
         </section>
 

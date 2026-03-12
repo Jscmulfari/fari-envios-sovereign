@@ -68,7 +68,7 @@ const HeroSection = () => {
             {/* ── IZQUIERDA: texto + teléfono ── */}
             <div className="hero-stage-left">
               <p className="hero-stage-desc">
-                Envía a Venezuela, Colombia y Europa en minutos. Sin apps, sin filas. Solo escríbenos por WhatsApp y listo.
+                Envía a 3 destinos: Venezuela, Colombia y Europa. Sin apps, sin filas. Solo escríbenos por WhatsApp y listo.
               </p>
               <ul className="hero-stage-perks" aria-label="Ventajas">
                 <li>
