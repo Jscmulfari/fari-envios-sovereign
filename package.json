@@ -1,0 +1,40 @@
+{
+  "name": "envios-manda",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --webpack",
+    "remotion": "remotion studio remotion/index.js",
+    "build": "next build",
+    "start": "next start",
+    "generate:map": "node scripts/generate-world-map.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jscmulfari/fari-envios-sovereign.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jscmulfari/fari-envios-sovereign/issues"
+  },
+  "homepage": "https://github.com/Jscmulfari/fari-envios-sovereign#readme",
+  "description": "",
+  "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.5.0",
+    "@remotion/cli": "^4.0.427",
+    "@remotion/player": "^4.0.427",
+    "@vnedyalk0v/react19-simple-maps": "^2.0.2",
+    "d3-geo": "^3.1.1",
+    "motion": "^12.34.2",
+    "next": "^16.0.0",
+    "prop-types": "^15.8.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "remotion": "^4.0.427",
+    "three": "^0.183.1",
+    "topojson-client": "^3.1.0"
+  }
+}
