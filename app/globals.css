@@ -484,9 +484,10 @@ a {
 .hero-stage-head {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-bottom: 2.5rem;
+  align-items: flex-start;
+  text-align: left;
+  margin-bottom: 1rem;
+  width: 100%;
 }
 
 .hero-stage-head .ref-hero-title {
@@ -573,6 +574,14 @@ a {
   display: flex;
   flex-direction: column;
   width: 100%;
+  justify-content: flex-start;
+}
+
+.hero-stage-phone-block {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
 /* Stats */
