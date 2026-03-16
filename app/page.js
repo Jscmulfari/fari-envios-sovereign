@@ -24,23 +24,6 @@ export default function HomePage() {
         </div>
       </header>
 
-      <a className="ref-island-dock" href="https://wa.me/726567607" target="_blank" rel="noreferrer">
-        <div className="ref-island-head">
-          <span className="ref-island-label">Iniciar Envío</span>
-          <span className="ref-island-dot" />
-        </div>
-        <div className="ref-island-content">
-          <div className="ref-island-row">
-            <span>Estado</span>
-            <span className="ref-green">Operativo</span>
-          </div>
-          <div className="ref-island-row">
-            <span>Tiempo</span>
-            <span>&lt; 60 Minutos</span>
-          </div>
-          <p className="ref-island-whatsapp">Continuar en WhatsApp →</p>
-        </div>
-      </a>
 
       <main>
         <HeroSection />
