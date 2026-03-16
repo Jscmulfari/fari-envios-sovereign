@@ -53,10 +53,6 @@ const HeroSection = () => {
 
           {/* ── TÍTULO ─────────────────────── */}
           <div className="hero-stage-head">
-            <div className="hero-live-badge">
-              <span className="hero-live-dot" aria-hidden="true" />
-              Servicio activo ahora
-            </div>
             <h1 className="ref-hero-title">
               Envía dinero <span>desde WhatsApp.</span>
             </h1>
